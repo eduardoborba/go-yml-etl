@@ -1,0 +1,43 @@
+rules:
+  - name: "Users from PSQL to Mongo"
+    source:
+      db: psql
+      host: http://localhost
+      port: 5432
+      user: root
+      password: root
+      data:
+        database: web_app_development
+        tables:
+          - users
+          - organizations
+        join_type: inner
+        columns:
+          - users.id
+          - users.first_name
+          - users.last_name
+          - users.email
+          - users.created_at
+          - users.updated_at
+          - organizations.id
+          - organizations.name
+    destination:
+      db: mongodb
+      host: http://localhost
+      port: 27017
+      user: root
+      password: root
+      data:
+        database: reports_development
+        collections:
+          - users
+        fields:
+          - id
+          - first_name
+          - last_name
+          - email
+          - created_at
+          - updated_at
+          - organization_id
+          - organization_name
+        
