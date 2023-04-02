@@ -2,12 +2,13 @@ rules:
   - name: "Users from PSQL to Mongo"
     source:
       db: psql
+      database: web_app_development
       host: http://localhost
       port: 5432
       user: root
       password: root
       data:
-        database: web_app_development
+        custom_query: "SELECT * FROM users;"
         tables:
           - users
           - organizations
@@ -23,12 +24,13 @@ rules:
           - organizations.name
     destination:
       db: mongodb
+      database: reports_development
       host: http://localhost
       port: 27017
       user: root
       password: root
       data:
-        database: reports_development
+        custom_query: "INSERT INTO users;"
         collections:
           - users
         fields:
@@ -40,4 +42,3 @@ rules:
           - updated_at
           - organization_id
           - organization_name
-        
