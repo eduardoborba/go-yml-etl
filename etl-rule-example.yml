@@ -5,8 +5,7 @@ rules:
       database: web_app_development
       host: http://localhost
       port: 5432
-      user: root
-      password: root
+      user: eduardoborba
       data:
         custom_query: "SELECT * FROM users;"
         tables:
@@ -27,8 +26,7 @@ rules:
       database: reports_development
       host: http://localhost
       port: 27017
-      user: root
-      password: root
+      user: eduardoborba
       data:
         custom_query: "INSERT INTO users;"
         collections:
